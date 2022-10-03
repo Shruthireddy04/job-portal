@@ -12,19 +12,11 @@ class LoginForm extends Component {
     errorMsg: '',
   }
 
-  onChangeUsername = event => {
-    this.setState({username: event.target.value})
-  }
-
-  onChangePassword = event => {
-    this.setState({password: event.target.value})
-  }
-
   onSubmitSuccess = jwtToken => {
     const {history} = this.props
-
     Cookies.set('jwt_token', jwtToken, {
       expires: 30,
+      path: '/',
     })
     history.replace('/')
   }
@@ -33,7 +25,7 @@ class LoginForm extends Component {
     this.setState({showSubmitError: true, errorMsg})
   }
 
-  submitForm = async event => {
+  onSubmitForm = async event => {
     event.preventDefault()
     const {username, password} = this.state
     const userDetails = {username, password}
@@ -51,39 +43,49 @@ class LoginForm extends Component {
     }
   }
 
-  renderPasswordField = () => {
-    const {password} = this.state
+  onEnterUsername = event => {
+    this.setState({username: event.target.value})
+  }
+
+  onChangePassword = event => {
+    this.setState({password: event.target.value})
+  }
+
+  renderUsername = () => {
+    const {username} = this.state
+
     return (
       <>
-        <label className="input-label" htmlFor="password">
-          PASSWORD
+        <label className="label" htmlFor="userName">
+          USERNAME
         </label>
         <input
-          type="password"
-          id="password"
-          className="password-input-field"
-          value={password}
-          onChange={this.onChangePassword}
-          placeholder="Password"
+          type="text"
+          id="userName"
+          placeholder="Username"
+          className="user-input"
+          value={username}
+          onChange={this.onEnterUsername}
         />
       </>
     )
   }
 
-  renderUsernameField = () => {
-    const {username} = this.state
+  renderPassword = () => {
+    const {password} = this.state
+
     return (
       <>
-        <label className="input-label" htmlFor="username">
-          USERNAME
+        <label className="label" htmlFor="password">
+          Password
         </label>
         <input
-          type="text"
-          id="username"
-          className="username-input-field"
-          value={username}
-          onChange={this.onChangeUsername}
-          placeholder="Username"
+          className="user-input"
+          id="password"
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={this.onChangePassword}
         />
       </>
     )
@@ -95,21 +97,24 @@ class LoginForm extends Component {
     if (jwtToken !== undefined) {
       return <Redirect to="/" />
     }
+
     return (
-      <div className="login-form-container">
-        <form className="form-container" onSubmit={this.submitForm}>
+      <div className="jobby-app-container">
+        <div className="card-container">
           <img
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
-            className="login-website-logo-desktop-image"
             alt="website logo"
+            className="website-logo"
           />
-          <div className="input-container">{this.renderUsernameField()}</div>
-          <div className="input-container">{this.renderPasswordField()}</div>
-          <button type="submit" className="login-button">
-            Login
-          </button>
-          {showSubmitError && <p className="error-message">*{errorMsg}</p>}
-        </form>
+          <form className="form-container" onSubmit={this.onSubmitForm}>
+            <div className="input-container">{this.renderUsername()}</div>
+            <div className="input-container">{this.renderPassword()}</div>
+            <button className="login-button" type="submit">
+              Login
+            </button>
+            {showSubmitError && <p className="error-msg">*{errorMsg}</p>}
+          </form>
+        </div>
       </div>
     )
   }

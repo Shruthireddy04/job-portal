@@ -1,113 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
 .home-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+  background-size: cover;
+  height: 95vh;
+}
+.responsive-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin: auto;
-  padding-top: 10px;
-  padding-bottom: 50px;
-  height: 100vh;
-  color: white;
-  background-color: #121212;
-  padding-left: 20px;
-  padding-right: 20px;
+  width: 650px;
+  padding: 15px;
+  margin-left: 25px;
 }
-
-@media screen and (min-width: 768px) {
-  .home-container {
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 96px;
-  }
-}
-
-.home-content {
-  display: flex;
-  flex-direction: column;
-
-  align-items: flex-start;
-}
-
-@media screen and (min-width: 768px) {
-  .home-content {
-    align-items: flex-start;
-  }
-}
-
-.home-mobile-img {
-  width: 206px;
-  background-color: transparent;
-  align-self: flex-end;
-}
-
-@media screen and (min-width: 768px) {
-  .home-mobile-img {
-    display: none;
-  }
-}
-
-.home-desktop-img {
-  width: 50%;
-  max-width: 450px;
-  margin-left: 85px;
-  background-color: transparent;
-}
-
-@media screen and (max-width: 767px) {
-  .home-desktop-img {
-    display: none;
-  }
-}
-
-.home-heading {
+.main-heading {
+  font-size: 64px;
   font-family: 'Roboto';
   font-weight: bold;
-  font-size: 30px;
-  line-height: 1.2;
+  color: #fff;
+  margin-top: 30px;
 }
-
-@media screen and (min-width: 768px) {
-  .home-heading {
-    font-size: 46px;
-    text-align: left;
-  }
-}
-
-.home-description {
+.job-desc {
+  color: #fff;
+  font-size: 24px;
   font-family: 'Roboto';
-  margin-top: 36px;
-  font-size: 14px;
-  line-height: 28px;
-
-  margin-bottom: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .home-description {
-    font-size: 18px;
-    margin-top: 0;
-    text-align: left;
-  }
-}
-
-.shop-now-button {
-  font-size: 14px;
   font-weight: 400;
-  font-family: 'Roboto';
-  color: white;
-  border: none;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  border-radius: 6px;
-  background-color: #4f46e5;
-  margin-top: 20px;
-  outline: none;
-  cursor: pointer;
+  line-height: 1.8;
+  margin-top: 25px;
 }
-
-@media screen and (min-width: 768px) {
-  .shop-now-button {
-    width: 150px;
-    font-size: 16px;
-  }
+.find-jobs {
+  background-color: #4f46e5;
+  padding: 16px;
+  color: #fff;
+  font-family: 'Roboto';
+  font-weight: 500;
+  width: 140px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 35px;
+  font-size: 16px;
 }
